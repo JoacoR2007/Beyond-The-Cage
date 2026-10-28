@@ -1,0 +1,898 @@
+{
+ "Joshua Van": [
+  75,
+  86,
+  58,
+  40,
+  85
+ ],
+ "Alexandre Pantoja": [
+  62,
+  72,
+  86,
+  88,
+  88
+ ],
+ "Manel Kape": [
+  85,
+  80,
+  55,
+  35,
+  70
+ ],
+ "Brandon Royval": [
+  68,
+  74,
+  76,
+  80,
+  76
+ ],
+ "Tatsuro Taira": [
+  66,
+  70,
+  88,
+  86,
+  80
+ ],
+ "Kyoji Horiguchi": [
+  70,
+  82,
+  66,
+  50,
+  78
+ ],
+ "Lone'er Kavanagh": [
+  80,
+  82,
+  56,
+  38,
+  76
+ ],
+ "Asu Almabayev": [
+  68,
+  66,
+  86,
+  65,
+  84
+ ],
+ "Brandon Moreno": [
+  64,
+  68,
+  78,
+  84,
+  78
+ ],
+ "Amir Albazi": [
+  74,
+  82,
+  60,
+  40,
+  78
+ ],
+ "Ramazan Temirov": [
+  68,
+  66,
+  86,
+  65,
+  84
+ ],
+ "Alex Perez": [
+  61,
+  65,
+  75,
+  81,
+  75
+ ],
+ "Steve Erceg": [
+  73,
+  81,
+  59,
+  39,
+  77
+ ],
+ "Tim Elliott": [
+  58,
+  62,
+  72,
+  78,
+  72
+ ],
+ "Tagir Ulanbekov": [
+  66,
+  64,
+  84,
+  63,
+  82
+ ],
+ "Charles Johnson": [
+  76,
+  78,
+  52,
+  34,
+  72
+ ],
+ "Petr Yan": [
+  76,
+  88,
+  78,
+  50,
+  84
+ ],
+ "Merab Dvalishvili": [
+  55,
+  66,
+  92,
+  60,
+  99
+ ],
+ "Song Yadong": [
+  80,
+  78,
+  55,
+  45,
+  75
+ ],
+ "Sean O'Malley": [
+  90,
+  90,
+  48,
+  40,
+  65
+ ],
+ "Mario Bautista": [
+  60,
+  70,
+  80,
+  78,
+  80
+ ],
+ "Umar Nurmagomedov": [
+  70,
+  72,
+  88,
+  80,
+  85
+ ],
+ "Cory Sandhagen": [
+  82,
+  84,
+  58,
+  40,
+  78
+ ],
+ "David Martínez": [
+  80,
+  82,
+  56,
+  38,
+  76
+ ],
+ "Raoni Barcelos": [
+  78,
+  80,
+  54,
+  36,
+  74
+ ],
+ "Farid Basharat": [
+  77,
+  79,
+  53,
+  35,
+  73
+ ],
+ "Marcus McGhee": [
+  64,
+  62,
+  82,
+  61,
+  80
+ ],
+ "Deiveson Figueiredo": [
+  63,
+  67,
+  77,
+  83,
+  77
+ ],
+ "Charles Jourdain": [
+  76,
+  78,
+  52,
+  34,
+  72
+ ],
+ "Aiemann Zahabi": [
+  77,
+  79,
+  53,
+  35,
+  73
+ ],
+ "Bryce Mitchell": [
+  64,
+  62,
+  82,
+  61,
+  80
+ ],
+ "Montel Jackson": [
+  75,
+  77,
+  51,
+  33,
+  71
+ ],
+ "Alexander Volkanovski": [
+  74,
+  86,
+  84,
+  60,
+  90
+ ],
+ "Movsar Evloev": [
+  62,
+  70,
+  90,
+  60,
+  92
+ ],
+ "Diego Lopes": [
+  72,
+  74,
+  78,
+  82,
+  75
+ ],
+ "Lerone Murphy": [
+  72,
+  80,
+  70,
+  50,
+  80
+ ],
+ "Aljamain Sterling": [
+  58,
+  66,
+  90,
+  85,
+  82
+ ],
+ "Jean Silva": [
+  85,
+  78,
+  64,
+  60,
+  70
+ ],
+ "Arnold Allen": [
+  82,
+  84,
+  58,
+  40,
+  78
+ ],
+ "Pat Sabatini": [
+  66,
+  64,
+  84,
+  63,
+  82
+ ],
+ "Nathaniel Wood": [
+  62,
+  66,
+  76,
+  82,
+  76
+ ],
+ "Youssef Zalal": [
+  76,
+  78,
+  52,
+  34,
+  72
+ ],
+ "Kevin Vallejos": [
+  88,
+  82,
+  56,
+  38,
+  76
+ ],
+ "Melquizael Costa": [
+  76,
+  78,
+  52,
+  34,
+  72
+ ],
+ "Steve Garcia": [
+  76,
+  78,
+  52,
+  34,
+  72
+ ],
+ "Aaron Pico": [
+  88,
+  81,
+  59,
+  39,
+  77
+ ],
+ "Jamall Emmers": [
+  63,
+  61,
+  81,
+  60,
+  79
+ ],
+ "Jose Miguel Delgado": [
+  58,
+  62,
+  72,
+  78,
+  72
+ ],
+ "Justin Gaethje": [
+  92,
+  80,
+  76,
+  45,
+  88
+ ],
+ "Ilia Topuria": [
+  96,
+  94,
+  76,
+  70,
+  84
+ ],
+ "Arman Tsarukyan": [
+  72,
+  74,
+  90,
+  70,
+  86
+ ],
+ "Charles Oliveira": [
+  76,
+  72,
+  82,
+  98,
+  72
+ ],
+ "Max Holloway": [
+  80,
+  96,
+  62,
+  42,
+  98
+ ],
+ "Paddy Pimblett": [
+  65,
+  69,
+  79,
+  85,
+  79
+ ],
+ "Benoît Saint Denis": [
+  67,
+  65,
+  85,
+  64,
+  83
+ ],
+ "Maurício Ruffy": [
+  86,
+  82,
+  56,
+  38,
+  76
+ ],
+ "Quillan Salkilld": [
+  62,
+  66,
+  76,
+  82,
+  76
+ ],
+ "Mateusz Gamrot": [
+  68,
+  66,
+  86,
+  65,
+  84
+ ],
+ "Dan Hooker": [
+  76,
+  78,
+  52,
+  34,
+  72
+ ],
+ "Renato Moicano": [
+  61,
+  65,
+  75,
+  81,
+  75
+ ],
+ "Rafael Fiziev": [
+  79,
+  81,
+  55,
+  37,
+  75
+ ],
+ "Tom Nolan": [
+  76,
+  78,
+  52,
+  34,
+  72
+ ],
+ "Beneil Dariush": [
+  61,
+  65,
+  75,
+  81,
+  75
+ ],
+ "Manuel Torres": [
+  75,
+  77,
+  51,
+  33,
+  71
+ ],
+ "Islam Makhachev": [
+  80,
+  78,
+  98,
+  90,
+  95
+ ],
+ "Ian Machado Garry": [
+  78,
+  84,
+  70,
+  55,
+  78
+ ],
+ "Carlos Prates": [
+  94,
+  86,
+  52,
+  40,
+  72
+ ],
+ "Michael Morales": [
+  85,
+  80,
+  68,
+  50,
+  78
+ ],
+ "Jack Della Maddalena": [
+  80,
+  92,
+  70,
+  52,
+  86
+ ],
+ "Gabriel Bonfim": [
+  77,
+  81,
+  79,
+  63,
+  83
+ ],
+ "Sean Brady": [
+  65,
+  69,
+  79,
+  85,
+  79
+ ],
+ "Belal Muhammad": [
+  68,
+  66,
+  86,
+  65,
+  84
+ ],
+ "Leon Edwards": [
+  74,
+  78,
+  76,
+  60,
+  80
+ ],
+ "Kamaru Usman": [
+  70,
+  68,
+  88,
+  67,
+  86
+ ],
+ "Joaquin Buckley": [
+  90,
+  80,
+  54,
+  36,
+  74
+ ],
+ "Yaroslav Amosov": [
+  71,
+  69,
+  89,
+  68,
+  87
+ ],
+ "Uroš Medić": [
+  76,
+  78,
+  52,
+  34,
+  72
+ ],
+ "Mike Malott": [
+  77,
+  79,
+  53,
+  35,
+  73
+ ],
+ "Daniel Rodriguez": [
+  71,
+  79,
+  57,
+  37,
+  75
+ ],
+ "Neil Magny": [
+  59,
+  63,
+  73,
+  79,
+  73
+ ],
+ "Sean Strickland": [
+  70,
+  82,
+  76,
+  40,
+  90
+ ],
+ "Khamzat Chimaev": [
+  82,
+  76,
+  97,
+  95,
+  82
+ ],
+ "Dricus du Plessis": [
+  85,
+  80,
+  76,
+  70,
+  92
+ ],
+ "Nassourdine Imavov": [
+  74,
+  80,
+  68,
+  55,
+  82
+ ],
+ "Brendan Allen": [
+  70,
+  68,
+  78,
+  86,
+  80
+ ],
+ "Caio Borralho": [
+  69,
+  67,
+  87,
+  66,
+  85
+ ],
+ "Joe Pyfer": [
+  92,
+  82,
+  56,
+  38,
+  76
+ ],
+ "Gregory Rodrigues": [
+  63,
+  67,
+  77,
+  83,
+  77
+ ],
+ "Anthony Hernandez": [
+  66,
+  64,
+  84,
+  63,
+  82
+ ],
+ "Israel Adesanya": [
+  82,
+  84,
+  58,
+  40,
+  78
+ ],
+ "Christian Leroy Duncan": [
+  74,
+  82,
+  60,
+  40,
+  78
+ ],
+ "Jared Cannonier": [
+  90,
+  80,
+  54,
+  36,
+  74
+ ],
+ "Ikram Aliskerov": [
+  66,
+  64,
+  84,
+  63,
+  82
+ ],
+ "Bo Nickal": [
+  65,
+  63,
+  83,
+  62,
+  81
+ ],
+ "Abusupiyan Magomedov": [
+  76,
+  78,
+  52,
+  34,
+  72
+ ],
+ "Michael Page": [
+  79,
+  81,
+  55,
+  37,
+  75
+ ],
+ "Carlos Ulberg": [
+  92,
+  90,
+  60,
+  40,
+  78
+ ],
+ "Magomed Ankalaev": [
+  85,
+  78,
+  86,
+  60,
+  86
+ ],
+ "Jiří Procházka": [
+  92,
+  84,
+  66,
+  55,
+  88
+ ],
+ "Khalil Rountree Jr.": [
+  90,
+  80,
+  52,
+  35,
+  70
+ ],
+ "Navajo Stirling": [
+  70,
+  70,
+  82,
+  88,
+  78
+ ],
+ "Paulo Costa": [
+  90,
+  82,
+  56,
+  38,
+  76
+ ],
+ "Jamahal Hill": [
+  90,
+  81,
+  55,
+  37,
+  75
+ ],
+ "Azamat Murzakanov": [
+  88,
+  82,
+  56,
+  38,
+  76
+ ],
+ "Jan Błachowicz": [
+  78,
+  80,
+  54,
+  36,
+  74
+ ],
+ "Dominick Reyes": [
+  80,
+  82,
+  56,
+  38,
+  76
+ ],
+ "Bogdan Guskov": [
+  85,
+  79,
+  53,
+  35,
+  73
+ ],
+ "Robert Whittaker": [
+  72,
+  76,
+  74,
+  58,
+  78
+ ],
+ "Johnny Walker": [
+  92,
+  79,
+  53,
+  35,
+  73
+ ],
+ "Alonzo Menifield": [
+  92,
+  79,
+  53,
+  35,
+  73
+ ],
+ "Nikita Krylov": [
+  61,
+  65,
+  75,
+  81,
+  75
+ ],
+ "Reinier de Ridder": [
+  63,
+  67,
+  77,
+  83,
+  77
+ ],
+ "Ciryl Gane": [
+  74,
+  92,
+  76,
+  70,
+  85
+ ],
+ "Tom Aspinall": [
+  94,
+  88,
+  85,
+  86,
+  80
+ ],
+ "Sergei Pavlovich": [
+  97,
+  84,
+  60,
+  45,
+  70
+ ],
+ "Alex Pereira": [
+  98,
+  92,
+  58,
+  35,
+  80
+ ],
+ "Alexander Volkov": [
+  80,
+  86,
+  62,
+  55,
+  78
+ ],
+ "Rizvan Kuniev": [
+  76,
+  70,
+  86,
+  66,
+  76
+ ],
+ "Josh Hokit": [
+  82,
+  70,
+  80,
+  45,
+  70
+ ],
+ "Curtis Blaydes": [
+  86,
+  66,
+  86,
+  65,
+  84
+ ],
+ "Waldo Cortes-Acosta": [
+  86,
+  81,
+  55,
+  37,
+  75
+ ],
+ "Vitor Petrino": [
+  62,
+  66,
+  76,
+  82,
+  76
+ ],
+ "Valter Walker": [
+  63,
+  67,
+  77,
+  83,
+  77
+ ],
+ "Serghei Spivac": [
+  61,
+  65,
+  75,
+  81,
+  75
+ ],
+ "Ante Delija": [
+  85,
+  79,
+  53,
+  35,
+  73
+ ],
+ "Derrick Lewis": [
+  96,
+  80,
+  54,
+  36,
+  74
+ ],
+ "Aleksandar Rakić": [
+  77,
+  79,
+  53,
+  35,
+  73
+ ],
+ "Tyrell Fortune": [
+  88,
+  78,
+  52,
+  34,
+  72
+ ]
+}
