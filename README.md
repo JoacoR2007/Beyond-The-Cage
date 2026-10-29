@@ -42,4 +42,4 @@ El "API en JSON" es `data/fighters.json`, servido por tu propio GitHub Pages.
 - Manual: fotos (`js/images.js`), estilo de pelea (`s`) de peleadores nuevos, país, y el campeón fijado en `champions` (hoy HW: Gane).
 
 ## Cómo se calculan las valoraciones
-Cada rubro es el percentil del peleador entre los peleadores activos (últimos 4 años, 3+ peleas): potencia (knockdowns y KO), striking (golpes por minuto, precisión, defensa y golpes recibidos), grappling (derribos, precisión, defensa, control), sumisiones y resistencia. El simulador usa esos números, el récord, el alcance, el diferencial de golpes y los cruces previos entre ambos.
+Cada rubro es el percentil del peleador entre los peleadores activos (últimos 4 años, 3+ peleas) de SU MISMA división (así un peso pesado no puntúa más fuerza que un mosca solo por pesar más): potencia (knockdowns y KO), striking (golpes por minuto, precisión, defensa y golpes recibidos), grappling (derribos, precisión, defensa, control), sumisiones y resistencia. El simulador usa esos números, el récord, el alcance, el diferencial de golpes y los cruces previos entre ambos y la forma reciente (últimos 5 combates).

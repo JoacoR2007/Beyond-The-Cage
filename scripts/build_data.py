@@ -26,6 +26,15 @@ def num(s):
     try: return int(float(s))          # el CSV trae valores como "1.0"
     except (TypeError, ValueError): return 0
 
+WC = [("light heavyweight", "LHW"), ("heavyweight", "HW"), ("flyweight", "FLY"), ("bantamweight", "BW"),
+      ("featherweight", "FW"), ("lightweight", "LW"), ("welterweight", "WW"), ("middleweight", "MW")]
+def wcode(s):                                   # categoría masculina de una pelea (None si es femenina, catchweight, etc.)
+    s = (s or "").lower()
+    return None if "women" in s else next((c for n, c in WC if n in s), None)
+def mshort(m):
+    m = (m or "").upper(); return "KO/TKO" if m.startswith("KO") else "SUB" if m.startswith("SUB") else "NC" if m.startswith(("COULD", "OVERT")) else m[:3]
+dv = defaultdict(lambda: defaultdict(int))     # peleas recientes por categoría de cada peleador
+
 # --- eventos y resultados
 events = {r["EVENT"].strip(): dt.datetime.strptime(r["DATE"].strip(), "%B %d, %Y").date() for r in rows("ufc_event_details.csv")}
 ref = max(events.values())
@@ -38,8 +47,11 @@ for r in rows("ufc_fight_results.csv"):
     bouts[(ev, bout)] = {"min": ((rnd - 1) * 300 + t) / 60 if rnd else 0, "date": events[ev]}
     oa, _, ob = r["OUTCOME"].strip().partition("/")
     meth = r["METHOD"].strip()
+    code = wcode(r.get("WEIGHTCLASS"))
     for who, res in ((a, oa), (b, ob)):
-        if res in ("W", "L", "D", "NC"): hist[key(who)].append((events[ev], res, meth, key(b if who == a else a)))
+        opp = b if who == a else a
+        if res in ("W", "L", "D", "NC"): hist[key(who)].append((events[ev], res, meth, key(opp), opp, rnd))
+        if code and events[ev] >= ref.replace(year=ref.year - 3): dv[key(who)][code] += 1
         hist[short(who)] = hist[key(who)]
 
 # --- estadísticas por pelea (suma de rounds)
@@ -71,24 +83,27 @@ def metrics(t, h):
             "ctrl15": div(t["ctrl"] * 15, m), "ko_rate": div(sum(1 for x in w if x[2].upper().startswith("KO")), len(w)),
             "subwin": div(sum(1 for x in w if x[2].upper().startswith("SUB")), len(w)), "finag": div(sum(1 for x in l if fin(x)), len(l)) if l else 0.0}
 
-# --- población activa para los percentiles
+# --- población activa POR DIVISIÓN: cada peleador se compara solo con los de su categoría,
+# así un peso pesado no tiene más "fuerza" que un mosca solo por pesar más.
 limit = ref.toordinal() - ACTIVE_YEARS * 365
-pop = defaultdict(list)
+prim = {k: max(c, key=c.get) for k, c in dv.items() if c}      # categoría donde pelea últimamente
+pop = defaultdict(lambda: defaultdict(list))
 for k, t in tot.items():
-    if t["n"] >= MIN_FIGHTS and t["min"] >= MIN_MIN and t["last"] >= limit:
+    if k in prim and t["n"] >= MIN_FIGHTS and t["min"] >= MIN_MIN and t["last"] >= limit:
         for name, v in metrics(t, hist[k]).items():
-            if v is not None: pop[name].append(v)
-for v in pop.values(): v.sort()
-def pc(name, v):
-    if v is None or not pop[name]: return None
-    s = pop[name]; p = (bisect.bisect_left(s, v) + bisect.bisect_right(s, v)) / 2 / len(s)
-    return p
+            if v is not None: pop[prim[k]][name].append(v)
+for d in pop.values():
+    for v in d.values(): v.sort()
+def pc(div, name, v):
+    s = pop[div][name]
+    if v is None or len(s) < 12: return None
+    return (bisect.bisect_left(s, v) + bisect.bisect_right(s, v)) / 2 / len(s)
 def wavg(parts):
     parts = [(p, w) for p, w in parts if p is not None]
     return sum(p * w for p, w in parts) / sum(w for _, w in parts) if parts else None
 inv = lambda p: None if p is None else 1 - p
-def ratings(m):
-    g = lambda n: pc(n, m[n])
+def ratings(m, div):
+    g = lambda n: pc(div, n, m[n])
     r = [wavg([(g("kd15"), .6), (g("ko_rate"), .4)]),
          wavg([(g("slpm"), .35), (g("acc"), .25), (g("def"), .25), (inv(g("sapm")), .15)]),
          wavg([(g("tdavg"), .35), (g("tdacc"), .15), (g("tddef"), .30), (g("ctrl15"), .20)]),
@@ -127,13 +142,14 @@ for di, code in enumerate(DIVS):
             if dte > asof: w += res == "W"; l += res == "L"; d += res == "D"
         uw, ul, ud = (sum(1 for x in h if x[1] == c) for c in "WLD")
         beat = sorted({named[x[3]] for x in h if x[1] == "W" and x[3] in named and named[x[3]] != f["n"]})
-        o = {"n": f["n"], "beat": beat, "c": f["c"], "r": fmt(w, l, d), "s": f["s"], "d": di, "k": ki, "ufc": fmt(uw, ul, ud) if h else None,
+        l5 = [[x[0].isoformat(), x[4], x[1], mshort(x[2]), x[5]] for x in sorted(h, key=lambda x: x[0], reverse=True)[:5]]
+        o = {"n": f["n"], "beat": beat, "l5": l5, "c": f["c"], "r": fmt(w, l, d), "s": f["s"], "d": di, "k": ki, "ufc": fmt(uw, ul, ud) if h else None,
              "reach": reach(tt["REACH"]) if tt else None, "height": inches(tt["HEIGHT"]) if tt else None,
              "stance": (tt["STANCE"] or None) if tt else None}
         sd = seed.get(f["n"], [60] * 5)
         isreal = bool(t and t["n"] >= MIN_FIGHTS and t["min"] >= MIN_MIN)
         if isreal:
-            m = metrics(t, h); rt = ratings(m); real_n += 1
+            m = metrics(t, h); rt = ratings(m, code); real_n += 1
             o.update({"real": True, "fights": int(t["n"]), "slpm": round(m["slpm"], 2), "acc": round(100 * m["acc"]) if m["acc"] is not None else None,
                       "sapm": round(m["sapm"], 2), "def": round(100 * m["def"]) if m["def"] is not None else None,
                       "tdavg": round(m["tdavg"], 2), "tdacc": round(100 * m["tdacc"]) if m["tdacc"] is not None else None,

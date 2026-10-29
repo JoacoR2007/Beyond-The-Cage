@@ -6,7 +6,10 @@ const EST=f=>({slpm:+(.1*f.S-2.8).toFixed(1),acc:Math.round(36+.14*f.S),sapm:+(6
 // [valor, 1 si es dato real | 0 si es estimado]
 function sv(f,k){return f[k]!=null?[f[k],1]:(k=="reach"?[null,0]:[EST(f)[k],0])}
 // Ajuste extra cuando ambos tienen datos reales: alcance, diferencial de golpes y defensa
-function ex(a,b){let d=0;if((a.beat||[]).includes(b.n))d+=10;if((b.beat||[]).includes(a.n))d-=10; // cara a cara previo en la UFC
+// Forma reciente: últimos 5 combates, con más peso los más nuevos; un final (KO/sumisión) suma o resta un poco más. Rango aprox. -1,3 a +1,3
+const FWT=[1,.85,.7,.55,.4];
+function form(f){return (f.l5||[]).reduce((s,x,i)=>{const w=x[2]=="W"?1:x[2]=="L"?-1:0;return s+FWT[i]*(w+(/^(KO|SUB)/.test(x[3])?.3*w:0))},0)/3.5}
+function ex(a,b){let d=7*(form(a)-form(b));if((a.beat||[]).includes(b.n))d+=10;if((b.beat||[]).includes(a.n))d-=10; // cara a cara previo en la UFC
 if(a.reach&&b.reach)d+=.35*(a.reach-b.reach);if(["slpm","sapm","def"].every(k=>a[k]!=null&&b[k]!=null))d+=2*((a.slpm-a.sapm)-(b.slpm-b.sapm))+.05*(a.def-b.def);return d}
 const st=f=>.6*f.S+.4*f.P,gr=f=>.6*f.G+.4*f.B,wp=f=>{const[x,y]=f.r.split("-").map(Number);return x/(x+y)};
 function sim(a,b){const g=.5+Math.abs(a.G-b.G)/120,sc=f=>g*gr(f)+(1-g)*st(f),tot=f=>.75*sc(f)+.15*f.R+10*wp(f);
