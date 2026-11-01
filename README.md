@@ -18,6 +18,7 @@ data/fighters.json      LO QUE LEE EL SITIO (se genera solo)
 scripts/fetch_ufc_data.py     baja los CSV públicos de UFCStats (repo Greco1899/scrape_ufc_stats)
 scripts/update_rankings.py    actualiza rankings.json desde Wikipedia (sin probar, ver abajo)
 scripts/build_data.py         calcula estadísticas, récords y valoraciones -> fighters.json
+scripts/fetch_photos.py       baja fotos libres (Wikimedia Commons) de las 8 peleas -> assets/photos + data/fight_photos.json
 scripts/bundle.py             junta todo en dist/index.single.html
 .github/workflows/update-data.yml   actualización automática semanal
 ```
@@ -43,3 +44,15 @@ El "API en JSON" es `data/fighters.json`, servido por tu propio GitHub Pages.
 
 ## Cómo se calculan las valoraciones
 Cada rubro es el percentil del peleador entre los peleadores activos (últimos 4 años, 3+ peleas) de SU MISMA división (así un peso pesado no puntúa más fuerza que un mosca solo por pesar más): potencia (knockdowns y KO), striking (golpes por minuto, precisión, defensa y golpes recibidos), grappling (derribos, precisión, defensa, control), sumisiones y resistencia. El simulador usa esos números, el récord, el alcance, el diferencial de golpes y los cruces previos entre ambos y la forma reciente (últimos 5 combates).
+
+## Fotos de las peleas
+`python scripts/fetch_photos.py` (una sola vez) baja una foto con licencia libre de Wikimedia Commons para cada pelea y guarda autor y licencia, que el sitio muestra al pie de la foto. Al tocar la cara activa del octágono la cámara baja a la lona y aparece la foto; sin foto se ve un afiche. Para forzar una foto concreta, editá `FIGHTS` en el script (campo `file`).
+
+## Ícono de la pestaña
+`assets/favicon.ico`, `favicon-32.png` y `apple-touch-icon.png` (emblema sobre negro). Si no cambia al instante, recargá sin caché (Ctrl+F5): el navegador guarda los íconos.
+
+## Actualización diaria
+El workflow corre todos los días a las 09:00 UTC (también a mano desde Actions > Actualizar datos > Run workflow) y solo hace commit si algo cambió. No usa ninguna clave ni cuenta de pago.
+
+### Fotos propias
+Las fotos de `assets/photos/fight-1.jpg` ... `fight-8.jpg` (orden cronológico) ya están cargadas y `fetch_photos.py` no las pisa (salvo `--force`). En `data/fight_photos.json`, `credit`, `license`, `page` y `source` son opcionales: si los completás, se muestran al pie de la foto. Si las fotos son de una agencia o fotógrafo, poné su crédito ahí. Formato recomendado: JPG de hasta ~1400 px de ancho (AVIF/WebP funcionan en navegadores modernos, pero JPG funciona en todos).
