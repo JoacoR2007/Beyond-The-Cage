@@ -20,8 +20,8 @@ const pl=f=>`<div>${av(f,0)}<h3>${f.n}</h3><span class="mu">${f.r} · ${t("sty")
 $("cmp").innerHTML=`<div><div class="vs">${pl(a)}<i>VS</i>${pl(b)}</div>${rows}<div class="mu" style="margin-top:14px">${t("xs")}</div>${x2}<div class="sr"><div>${pills(a)}</div><span>${t("l5")}</span><div>${pills(b)}</div></div></div><div class="cr"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="48" fill="none" stroke="currentColor" stroke-opacity=".25" stroke-width="14"/><circle cx="60" cy="60" r="48" fill="none" stroke="var(--ac)" stroke-width="14" stroke-dasharray="${C*pa/100} ${C}" transform="rotate(-90 60 60)"/><text x="60" y="64" text-anchor="middle" font-size="26" font-weight="700" font-family="Oswald,sans-serif" fill="currentColor">${pa}%</text><text x="60" y="82" text-anchor="middle" font-size="11" fill="currentColor" opacity=".6">${pb}%</text></svg><div class="lg"><span><i style="background:var(--ac)"></i>${a.n} · ${pa}%</span><span><i style="background:currentColor;opacity:.3"></i>${b.n} · ${pb}%</span></div><p class="mu">${t("mT")}:<br>KO/TKO ${r.m[0]}% · SUB ${r.m[1]}% · DEC ${r.m[2]}%</p><p class="mu">${r.who} ${t(r.ek)}</p></div>`}
 function sels(){const fs=F.filter(f=>f.d==S.d),o=f=>`<option value="${f.id}">${f.n}</option>`;
 $("sd").innerHTML=K.map((k,d)=>`<option value="${d}">${t("dv")[d]} · ${W[d]}</option>`).join("");$("sd").value=S.d;$("sa").innerHTML=fs.map(o).join("");$("sb").innerHTML=fs.map(o).join("");$("sa").value=S.a;$("sb").value=S.b;simR()}
-function render(){document.querySelectorAll("[data-i]").forEach(e=>e.textContent=t(e.dataset.i));root.lang=L;$("lb").classList.toggle("alt",L!="es");$("mb").textContent=t("mn");$("upd").textContent=t("up")+": "+(DATA.updated||"");
-$("mp").innerHTML=[0,1,2].map(i=>`<button data-go="${i}" class="${i==vw?"cur":""}">${t("n"+(i+1))}</button>`).join("");
+function render(){document.querySelectorAll("[data-i]").forEach(e=>e.textContent=t(e.dataset.i));root.lang=L;$("lb").classList.toggle("alt",L!="es");$("mt1").textContent=t("mn");$("mt2").textContent=t("mc");$("upd").textContent=t("up")+": "+(DATA.updated||"");
+$("mp").innerHTML=[0,1,2].map(i=>`<button data-go="${i}" style="--k:${i}" class="${i==vw?"cur":""}">${t("n"+(i+1))}</button>`).join("");
 $("st").innerHTML=t("s").map(s=>`<div><span class="n">${s[0]}</span>${s[1]}</div>`).join("");$("tl").innerHTML=t("tl").map(e=>`<div><b>${e[0]}</b><br>${e[1]}</div>`).join("");
 ocRender();
 $("tabs").innerHTML=K.map((k,d)=>`<button class="tab ${d==cur?"on":""}" data-d="${d}">${t("dv")[d]} · ${W[d]}</button>`).join("");
@@ -70,5 +70,7 @@ $("stage").onclick=e=>{if(moved)return;if(oc.classList.contains("down"))return o
 document.addEventListener("keydown",e=>{if(e.key=="Escape")ocClose()});
 ocBuild();if(!matchMedia("(prefers-reduced-motion: reduce)").matches)oT=setInterval(()=>{if(!hov&&!document.hidden)ocGo(oN+1)},9000);
 // Brillo que sigue al mouse en los botones de la barra
-document.querySelectorAll(".nbtn").forEach(b=>b.addEventListener("pointermove",e=>{const r=b.getBoundingClientRect();b.style.setProperty("--mx",e.clientX-r.left+"px");b.style.setProperty("--my",e.clientY-r.top+"px")}));
+document.querySelectorAll(".nbtn,.mbtn").forEach(b=>b.addEventListener("pointermove",e=>{const r=b.getBoundingClientRect();b.style.setProperty("--mx",e.clientX-r.left+"px");b.style.setProperty("--my",e.clientY-r.top+"px")}));
+// El botón de menú refleja si el menú está abierto (se cierra de varias formas: clic afuera, elegir una opción, etc.)
+new MutationObserver(()=>{const on=$("mp").classList.contains("on");$("mb").classList.toggle("open",on);$("mb").setAttribute("aria-expanded",on)}).observe($("mp"),{attributes:true,attributeFilter:["class"]});
 init();

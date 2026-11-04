@@ -101,3 +101,29 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;bac
 ::view-transition-new(root){animation:reveal .75s cubic-bezier(.4,0,.2,1) both}
 @keyframes reveal{from{clip-path:circle(0 at var(--tx,50%) var(--ty,50%))}to{clip-path:circle(150vmax at var(--tx,50%) var(--ty,50%))}}
 @media(prefers-reduced-motion:reduce){.nbtn,.flip,.ti,.ti *{transition:none!important}::view-transition-new(root){animation:none}}
+
+/* Botón de menú: hamburguesa que se vuelve X, etiqueta que se desliza, brillo, resplandor suave y menú que se despliega */
+.nav .mbtn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-width:136px;height:50px;padding:0 20px;border-radius:26px;transition:transform .25s cubic-bezier(.3,1.6,.4,1),box-shadow .25s;animation:glow 3.6s ease-in-out infinite}
+.mbtn:hover{animation:none;transform:translateY(-3px) scale(1.04);box-shadow:0 8px 22px -6px var(--nl)}
+.mbtn:active{transform:scale(.93);transition-duration:.08s}
+.mbtn::before{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,#ffffff59,transparent);transform:skewX(-20deg);transition:left .7s;pointer-events:none}
+.mbtn:hover::before{left:130%}
+.mbtn::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle 60px at var(--mx,50%) var(--my,50%),#ffffff40,transparent 70%);opacity:0;transition:opacity .3s}.mbtn:hover::after{opacity:1}
+.mtw{display:grid;height:1.25em;line-height:1.25;overflow:hidden}
+.mtw b{grid-area:1/1;font-weight:inherit;text-align:center;transition:transform .45s cubic-bezier(.3,1.4,.4,1),opacity .3s}
+.mt2{transform:translateY(130%);opacity:0}.mbtn.open .mt1{transform:translateY(-130%);opacity:0}.mbtn.open .mt2{transform:none;opacity:1}
+.bars{position:relative;width:22px;height:16px;transition:transform .55s cubic-bezier(.3,1.5,.4,1)}
+.bars i{position:absolute;left:0;width:100%;height:2.5px;border-radius:2px;background:currentColor;transition:transform .45s cubic-bezier(.3,1.5,.4,1),top .3s,width .3s,opacity .2s}
+.bars i:nth-child(1){top:0}.bars i:nth-child(2){top:6.8px;width:68%}.bars i:nth-child(3){top:13.6px}
+.mbtn:hover .bars i:nth-child(2){width:100%}
+.mbtn.open .bars i:nth-child(1){top:6.8px;transform:rotate(45deg)}.mbtn.open .bars i:nth-child(2){opacity:0;transform:scaleX(0)}.mbtn.open .bars i:nth-child(3){top:6.8px;transform:rotate(-45deg)}
+.mbtn.open:hover .bars{transform:rotate(90deg)}
+@keyframes glow{0%,100%{filter:drop-shadow(0 0 0 transparent)}50%{filter:drop-shadow(0 0 9px var(--nl))}}
+.mp{transform-origin:100% 0}
+.mp.on{animation:drop .38s cubic-bezier(.3,1.4,.4,1)}
+@keyframes drop{from{opacity:0;transform:translateY(-10px) scale(.94)}to{opacity:1;transform:none}}
+.mp.on button{animation:itemIn .42s cubic-bezier(.3,1.3,.4,1) both;animation-delay:calc(var(--k,0)*70ms + 90ms)}
+@keyframes itemIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+.mp button{transition:padding-left .25s,color .2s,background .2s}.mp button:hover{padding-left:30px;background:#ffffff0f}
+@media(max-width:760px){.nav .mbtn{min-width:108px;height:44px;padding:0 14px;gap:9px}}
+@media(prefers-reduced-motion:reduce){.mbtn{animation:none!important}.mbtn *,.mbtn::before,.mp button{transition:none!important}.mp.on,.mp.on button{animation:none!important}}
