@@ -127,3 +127,5 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;bac
 .mp button{transition:padding-left .25s,color .2s,background .2s}.mp button:hover{padding-left:30px;background:#ffffff0f}
 @media(max-width:760px){.nav .mbtn{min-width:108px;height:44px;padding:0 14px;gap:9px}}
 @media(prefers-reduced-motion:reduce){.mbtn{animation:none!important}.mbtn *,.mbtn::before,.mp button{transition:none!important}.mp.on,.mp.on button{animation:none!important}}
+
+.mu.vd{font-size:11px;line-height:1.45;opacity:.8;margin-top:14px;border-top:1px solid var(--ln);padding-top:10px;text-align:left}

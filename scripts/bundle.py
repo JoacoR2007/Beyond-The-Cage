@@ -20,9 +20,11 @@ if (R / "data/fight_photos.json").exists():
     for p in photos["photos"]:
         if p and (R / p["file"]).exists(): p["file"] = "data:image/jpeg;base64," + b64(R / p["file"])
         elif p: p["file"] = ""          # sin archivo local: se muestra el afiche
+styles = dump(json.load(open(R / "data/styles.json", encoding="utf-8"))) if (R / "data/styles.json").exists() else "null"
+model = dump(json.load(open(R / "data/model.json", encoding="utf-8"))) if (R / "data/model.json").exists() else "null"
 for f in ("i18n", "model", "images", "app"):
     code = (R / f"js/{f}.js").read_text(encoding="utf-8")
-    if f == "app": code = f"window.__DATA__={data};window.__PHOTOS__={dump(photos)};\n" + code
+    if f == "app": code = f"window.__DATA__={data};window.__PHOTOS__={dump(photos)};window.__MODEL__={model};window.__STYLES__={styles};\n" + code
     h = h.replace(f'<script src="js/{f}.js"></script>', "<script>" + code + "</script>")
 (R / "dist").mkdir(exist_ok=True)
 (R / "dist/index.single.html").write_text(h, encoding="utf-8")
